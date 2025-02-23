@@ -9,6 +9,9 @@ export default {
     ],
     theme: {
         extend: {
+            aspectRatio: {
+                'card': '7/10',
+            }
         },
     },
     future: {
