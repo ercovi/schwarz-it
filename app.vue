@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <Body class="bg-slate-300">
         <NuxtLoadingIndicator
             :throttle="200"
             :height="3"
@@ -8,7 +8,7 @@
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>
-    </div>
+    </Body>
 </template>
 
 <script setup>

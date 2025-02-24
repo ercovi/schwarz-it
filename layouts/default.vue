@@ -1,7 +1,7 @@
 <template>
     <div>
         <TheHeader />
-        <main id="container" class="mx-auto max-w-7xl">
+        <main id="container" class="p-8 mx-auto max-w-7xl">
             <slot />
         </main>
         <TheFooter />
