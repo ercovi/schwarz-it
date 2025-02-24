@@ -28,12 +28,12 @@ watch(data, (newData) => {
   <section>
     <CommonLoader v-if="pending"  />
     <div v-if="error">Failed to load cards. <button @click="refresh()">Retry</button></div>
-    <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-2 py-8">
+    <div v-else class="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
         <CardPreview 
             v-for="{id, imageUrl, name, manaCost, type} in data?.cards"
-            :key="id"
-            class="card col-span-1"
             :id
+            :key="id"
+            class="col-span-1 card"
             :name
             :manaCost
             :type
@@ -41,9 +41,6 @@ watch(data, (newData) => {
         />
     </div>
     
-    <div class="flex justify-between mt-4">
-      <button @click="page--" :disabled="page <= 1">Previous</button>
-      <button @click="page++">Next</button>
-    </div>
+    <CommonPagination v-model:page="page" />
   </section>
 </template>
