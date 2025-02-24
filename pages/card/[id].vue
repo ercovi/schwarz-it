@@ -6,6 +6,20 @@
             <p>{{ card.manaCost }}</p>
             <p>{{ card.type }}</p>
         </div>
+
+        <CommonButton
+          v-if="!isInCollection"
+          @click="addToCollection"
+        >
+            Add to Collection
+        </CommonButton>
+        <CommonButton
+            v-else  
+            theme="red"
+            @click="removeFromCollection"
+        >
+            Remove from Collection
+        </CommonButton>
     </div>
 </template>
 
@@ -32,4 +46,23 @@ const { data: card, } = useFetch(`${routeId}`, {
     return cardFromApi?.card;
   }
 });
+
+const collectionStore = useCollectionStore();
+
+const isInCollection = computed(() => {
+  return collectionStore.cards.some(c => c.id === card.value?.id);
+});
+
+const addToCollection = () => {
+    console.log('clicked add', card.value, collectionStore)
+  if (card.value) {
+    collectionStore.addCardToCollection(card.value);
+  }
+};
+
+const removeFromCollection = () => {
+  if (card.value) {
+    collectionStore.removeCardFromCollection(card.value);
+  }
+};
 </script>
