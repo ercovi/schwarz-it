@@ -6,41 +6,30 @@
             <p>{{ card.manaCost }}</p>
             <p>{{ card.type }}</p>
         </div>
-        {{ routeId }}
-        {{ `${API_URL}/${routeId}` }}
     </div>
 </template>
 
 <script setup>
 const config = useRuntimeConfig();
 const API_URL = config.public.apiUrl;
-const route = useRoute()
-const routeId = route.params.id
 
-const cardsStore = useCardsStore()
-const storedCard = cardsStore.getCardById(routeId)
-console.log({ storedCard })
-const shouldFetch = !storedCard
-console.log({ shouldFetch })
+const {params} = useRoute();
+const routeId = params.id;
 
-const key = `cards-${routeId}`
+const cardsStore = useCardsStore();
 
-const { data: fetchedCard } = useAsyncData(
-  key,
-  () => $fetch(`${API_URL}/${routeId}`),
-  { enabled: shouldFetch }
-)
-
-// It returns the fetched card or fetched card from api
-const card = computed(() => {
-  return cardsStore.getCardById(routeId) || fetchedCard.value?.card
-})
-console.log('card', card.value)
-
-// If the card is fetched, we push it to the store
-watch(fetchedCard, (newCard) => {
-  if (newCard && !cardsStore.getCardById(routeId)) {
-    cardsStore.pushCards([newCard])
+const { data: card, } = useFetch(`${routeId}`, {
+  baseURL: `${API_URL}/`,
+  //Before requesting, check if the card is already in the store.
+  getCachedData: () => {
+    return cardsStore.getCardById(routeId) || null;
+  },
+  //Once the data is obtained from the API, the card is stored in the store.
+  transform: (cardFromApi) => {
+    if (!cardsStore.getCardById(routeId)) {
+      cardsStore.pushCards([cardFromApi?.card]);
+    }
+    return cardFromApi?.card;
   }
-})
+});
 </script>
