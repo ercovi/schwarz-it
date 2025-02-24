@@ -1,9 +1,10 @@
 <template>
     <section 
-        class="flex justify-between"
+        class="flex justify-between p-4 bg-white rounded-lg shadow-lg "
     >
         <CommonButton 
             :disabled="page <= 1"
+            variant="outline"
             @click="decrementPage"
         >
             Previous
