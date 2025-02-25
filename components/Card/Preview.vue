@@ -12,7 +12,18 @@
                 :alt="name"
                 loading="lazy" 
                 class="w-full aspect-card"
+                width="600px"
+                height="500px"
             >
+            <!-- <NuxtImg
+                :src="imageUrl"
+                placeholder="/card.webp"
+                :alt="`${name} card image`"
+                loading="lazy" 
+                class="w-full aspect-card"
+                width="600px"
+                height="500px"
+            /> -->
             <div class="flex flex-col items-center">
                 <h2 class="text-2xl font-bold">{{ name }}</h2>
                 <span class="text-xl">{{ manaCost }}</span>
