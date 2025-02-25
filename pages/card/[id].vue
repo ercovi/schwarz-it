@@ -7,14 +7,22 @@
         >
             <article
                 id="card-info"
-                class="grid items-center grid-cols-2 mx-auto"
+                class="grid grid-cols-2 mx-auto gap-x-4"
             >
-                <img
-                    :src="card?.imageUrl"
-                    :alt="name"
-                    loading="lazy" 
-                    class="w-3/5 mx-auto aspect-card "
-                >
+                <figure class="flex flex-col gap-y-4">
+                    <img
+                        :src="card?.imageUrl"
+                        :alt="name"
+                        loading="lazy" 
+                        class="w-3/4 mx-auto aspect-card"
+                    >
+                    <figcaption class="px-2 text-balance">
+                        {{ card?.text }}
+                    </figcaption>
+                    <CollectionToggleCard 
+                        :card
+                    />
+                </figure>
 
                 <div>
                     <CardInfoIntroduction 
@@ -23,28 +31,27 @@
                         :type="card?.type"
                         :rarity="card?.rarity"
                         :description="card?.text"
+                        class="p-3"
                     />
                     <div
                         id="card-stats"
-                        class="bg-gray-200"
+                        class="p-3 bg-gray-200 rounded-lg"
                     >   
                         <CardInfoDefinitionList
                             :items="powers"
+                            :isWide="true"
                         />
                     </div>
                     <CardInfoDefinitionList
                         :items="legalities"
+                        :isWide="true"
+                        class="p-3"
                     />
                     
                 </div>
 
 
             </article>
-
-            <CollectionToggleCard 
-                :card
-            />
-
         </section>
     </section>
 </template>
