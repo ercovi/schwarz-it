@@ -22,3 +22,9 @@ const menuItems = ref([
     { name: 'Collection', path: '/collection', id: useId() },
 ]);
 </script>
+
+<style scoped>
+nav:has(.router-link-exact-active) a:not(.router-link-exact-active) {
+    @apply opacity-50 hover:opacity-100 transition-opacity duration-300;
+}
+</style>
