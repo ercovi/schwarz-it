@@ -27,11 +27,11 @@ const props = defineProps({
         required: true,
     } 
 });
-const store = useCollectionStore();
+const collectionStore = useCollectionStore();
 
-const isInCollection = computed(() => store.isInCollection(props.card.id));
+const isInCollection = computed(() => collectionStore.isInCollection(props.card.id));
 
 const toggleCardInCollection = () => {
-    store.toggleCardInCollection(props.card);
+    collectionStore.toggleCardInCollection(props.card);
 };
 </script>
