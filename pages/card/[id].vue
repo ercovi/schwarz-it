@@ -1,22 +1,57 @@
 <template>
-    <div class="">
-        <h1 class="text-4xl font-semibold text-center">{{ card?.name }}</h1>
+    <section class="">
+        <h1 v-if="card?.name" class="text-5xl font-semibold text-center">{{ card?.name }}</h1>
 
-        <div
-            class="p-4 mt-4 bg-white rounded-lg shadow-md"
+        <section
+            class="p-8 mt-4 bg-white rounded-lg shadow-md"
         >
-            <div v-if="card">
-                <h2>{{ card.name }}</h2>
-                <p>{{ card.manaCost }}</p>
-                <p>{{ card.type }}</p>
-            </div>
+            <article
+                id="card-info"
+                class="grid items-center grid-cols-2 mx-auto"
+            >
+                <img
+                    :src="card?.imageUrl"
+                    :alt="name"
+                    loading="lazy" 
+                    class="w-3/5 mx-auto aspect-card "
+                >
+
+                <div>
+                    <CardInfoIntroduction 
+                        :name="card?.name"
+                        :artist="card?.artist"
+                        :type="card?.type"
+                        :rarity="card?.rarity"
+                        :description="card?.text"
+                    />
+                    <div
+                        id="card-stats"
+                        class="bg-gray-200"
+                    >   
+                        <CardInfoDefinitionList
+                            :items="powers"
+                        />
+                    </div>
+                    <dl v-if="card?.legalities.length > 0">
+                        <template
+                            v-for="({format, legality}, index) in card?.legalities"
+                            :key="`legality-${index}`"
+                        >
+                            <dt>{{format}}</dt>
+                            <dd>{{legality}}</dd>
+                        </template>
+                    </dl>
+                </div>
+
+
+            </article>
 
             <CollectionToggleCard 
                 :card
             />
 
-        </div>
-    </div>
+        </section>
+    </section>
 </template>
 
 <script setup>
@@ -42,5 +77,12 @@ const { data: card, } = useFetch(`${routeId}`, {
     return cardFromApi?.card;
   }
 });
+console.log('card', card.value)
+const powers = computed(() => [
+  { label: 'Mana Cost', value: card.value.manaCost },
+  { label: 'Power', value: card.value.power },
+  { label: 'Cmc', value: card.value.cmc },
+  { label: 'Toughness', value: card.value.toughness }
+]);
 
 </script>
