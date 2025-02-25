@@ -32,15 +32,10 @@
                             :items="powers"
                         />
                     </div>
-                    <dl v-if="card?.legalities.length > 0">
-                        <template
-                            v-for="({format, legality}, index) in card?.legalities"
-                            :key="`legality-${index}`"
-                        >
-                            <dt>{{format}}</dt>
-                            <dd>{{legality}}</dd>
-                        </template>
-                    </dl>
+                    <CardInfoDefinitionList
+                        :items="legalities"
+                    />
+                    
                 </div>
 
 
@@ -84,5 +79,11 @@ const powers = computed(() => [
   { label: 'Cmc', value: card.value.cmc },
   { label: 'Toughness', value: card.value.toughness }
 ]);
+
+const legalities = computed(() => {
+  return card.value?.legalities?.length
+    ? card.value.legalities.map(({ format, legality }) => ({ label: format, value: legality }))
+    : [];
+});
 
 </script>

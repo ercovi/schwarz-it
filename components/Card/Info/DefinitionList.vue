@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <dl v-if="items.length" class="grid grid-cols-[70px_auto]">
+    <dl v-if="items.length" class="grid grid-cols-[150px_auto]">
         <template 
             v-for="({label, value}, index) in items" 
             :key="`list-${label}-${value}-${index}`"
@@ -16,5 +16,5 @@ defineProps({
             <dt class="font-semibold">{{ label }}</dt>
             <dd>{{ value }}</dd>
         </template>
-  </dl>
+    </dl>
 </template>
