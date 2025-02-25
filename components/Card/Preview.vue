@@ -26,7 +26,7 @@
             /> -->
             <div class="flex flex-col items-center">
                 <h2 class="text-2xl font-bold">{{ name }}</h2>
-                <span class="text-xl">{{ manaCost }}</span>
+                <span class="text-xl">Mana Cost: {{ manaCost }}</span>
                 <span class="text-lg text-slate-400">{{ type }}</span>
             </div>
         </NuxtLink>
