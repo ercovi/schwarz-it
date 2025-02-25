@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 z-10 flex items-center justify-center w-full h-16 bg-white border-b border-gray-300">
+    <header class="sticky top-0 z-10 flex items-center justify-center w-full h-16 bg-white border-b border-gray-300 shadow-md">
         <nav 
             v-if="menuItems.length > 0"
             class="flex gap-x-8"

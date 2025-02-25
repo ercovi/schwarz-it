@@ -25,7 +25,7 @@ defineProps({
             :key="`list-${label}-${value}-${index}`"
         >
             <dt class="font-semibold">{{ label }}</dt>
-            <dd>{{ value }}</dd>
+            <dd class="text-center md:text-left">{{ value }}</dd>
         </template>
     </dl>
 </template>

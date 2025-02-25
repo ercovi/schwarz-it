@@ -25,7 +25,7 @@ watch(data, (newData) => {
 </script>
 
 <template>
-    <section class="flex flex-col gap-y-8">
+    <section class="flex flex-col gap-y-4 md:gap-y-8">
         <CommonLoader v-if="pending"  />
         <div v-if="error">
             Failed to load cards. 
@@ -39,7 +39,7 @@ watch(data, (newData) => {
             <CommonPagination 
                 v-model:page="page" 
             />
-            <CardGrid >
+            <CardGrid>
                 <CardPreview 
                     v-for="{id, imageUrl, name, manaCost, type} in data?.cards"
                     :id

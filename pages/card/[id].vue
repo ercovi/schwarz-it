@@ -1,13 +1,13 @@
 <template>
     <section class="">
-        <h1 v-if="card?.name" class="text-5xl font-semibold text-center">{{ card?.name }}</h1>
+        <h1 v-if="card?.name" class="text-3xl font-semibold text-center md:text-5xl">{{ card?.name }}</h1>
 
         <section
-            class="p-8 mt-4 bg-white rounded-lg shadow-md"
+            class="px-3 py-6 mt-4 bg-white rounded-lg shadow-md md:p-8"
         >
             <article
                 id="card-info"
-                class="grid grid-cols-2 mx-auto gap-x-4"
+                class="grid grid-cols-1 mx-auto md:grid-cols-2 gap-x-4"
             >
                 <figure class="flex flex-col gap-y-4">
                     <img
