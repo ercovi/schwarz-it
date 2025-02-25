@@ -1,25 +1,31 @@
 <template>
     <div class="">
-        <h1>Card</h1>
-        <div v-if="card">
-            <h2>{{ card.name }}</h2>
-            <p>{{ card.manaCost }}</p>
-            <p>{{ card.type }}</p>
-        </div>
+        <h1 class="text-4xl font-semibold text-center">{{ card?.name }}</h1>
 
-        <CommonButton
-          v-if="!isInCollection"
-          @click="addToCollection"
+        <div
+            class="p-4 mt-4 bg-white rounded-lg shadow-md"
         >
-            Add to Collection
-        </CommonButton>
-        <CommonButton
-            v-else  
-            theme="red"
-            @click="removeFromCollection"
-        >
-            Remove from Collection
-        </CommonButton>
+            <div v-if="card">
+                <h2>{{ card.name }}</h2>
+                <p>{{ card.manaCost }}</p>
+                <p>{{ card.type }}</p>
+            </div>
+
+            <CommonButton
+            v-if="!isInCollection"
+            @click="addToCollection"
+            >
+                Add to Collection
+            </CommonButton>
+            <CommonButton
+                v-else  
+                theme="red"
+                @click="removeFromCollection"
+            >
+                Remove from Collection
+            </CommonButton>
+
+        </div>
     </div>
 </template>
 
@@ -62,7 +68,7 @@ const addToCollection = () => {
 
 const removeFromCollection = () => {
   if (card.value) {
-    collectionStore.removeCardFromCollection(card.value);
+    collectionStore.removeCardFromCollection(card.value?.id);
   }
 };
 </script>
