@@ -3,14 +3,18 @@
         <template v-if="cards.length === 0">
             <p>No cards in the collection</p>
         </template>
-        <template v-else>
-            <span
-                v-for="{id, name} in cards"
+        <CardGrid v-else>            
+            <CardPreview 
+                v-for="{id, imageUrl, name, manaCost, type} in cards"
+                :id
                 :key="id"
-            >
-                {{ name }}
-            </span>
-        </template>
+                class="col-span-1 card"
+                :name
+                :manaCost
+                :type
+                :imageUrl
+            />
+        </CardGrid>
     </div>
 </template>
 

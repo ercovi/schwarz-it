@@ -35,7 +35,9 @@ watch(data, (newData) => {
                 Retry
             </CommonButton>
         </div>
-        <div v-else class="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+        <CardGrid 
+            v-else 
+        >
             <CardPreview 
                 v-for="{id, imageUrl, name, manaCost, type} in data?.cards"
                 :id
@@ -46,7 +48,7 @@ watch(data, (newData) => {
                 :type
                 :imageUrl
             />
-        </div>
+        </CardGrid>
         
         <CommonPagination 
             v-if="!pending"
