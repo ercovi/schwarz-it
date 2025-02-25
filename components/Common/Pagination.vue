@@ -4,7 +4,7 @@
     >
         <CommonButton 
             :disabled="page <= 1"
-            variant="outline"
+            :variant="page <= 1 ? 'outline' : 'solid'"
             @click="decrementPage"
         >
             Previous
