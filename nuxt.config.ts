@@ -5,7 +5,7 @@ const isProduction = process.env.APP_ENV == 'production'
 
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', '@pinia/nuxt', '@nuxt/image'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', '@pinia/nuxt', '@nuxt/image', '@nuxt/test-utils/module'],
     css: ['@/assets/styles/global.css'],
     dev: isDev,
     devtools: { enabled: isDev },
