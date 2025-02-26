@@ -73,11 +73,11 @@ const legalities = computed(() => {
 
 
 useHead({
-    title: `${card.value?.name} - Detailed Page`,
+    title: `${card.value?.name} - Detailed Magic Page`,
     meta: [
-        { name: 'description', content: card.value?.text || 'Card details' },
+        { name: 'description', content: card.value?.text || 'Magic card details' },
         { property: 'og:title', content: card.value?.name },
-        { property: 'og:description', content: card.value?.text || 'Card details' },
+        { property: 'og:description', content: card.value?.text || 'Magic card details' },
         { property: 'og:image', content: card.value?.imageUrl },
     ]
 });
