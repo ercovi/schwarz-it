@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-y-3">
-        <div>
+        <header>
             <h2 class="text-2xl font-semibold">
                 {{ name }}
             </h2>
@@ -9,7 +9,7 @@
                 class="text-base italic text-gray-500">
                 By {{artist}}
             </h3>
-        </div>
+        </header>
           
         <CardInfoDefinitionList 
             :items="types"
