@@ -89,4 +89,15 @@ const legalities = computed(() => {
     : [];
 });
 
+
+useHead({
+    title: `${card.value?.name} - Detailed Page`,
+    meta: [
+        { name: 'description', content: card?.text || 'Card details' },
+        { property: 'og:title', content: card?.name },
+        { property: 'og:description', content: card?.text || 'Card details' },
+        { property: 'og:image', content: card?.imageUrl },
+    ]
+});
+
 </script>
