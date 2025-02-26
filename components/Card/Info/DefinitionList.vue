@@ -14,10 +14,10 @@ defineProps({
 <template>
     <dl 
         v-if="items.length" 
-        class="grid grid-cols-2 lg:grid-cols-[150px_auto_150px_auto]"
+        class="grid grid-cols-2"
         :class="{
-            'xl:grid-cols-[175px_auto_175px_auto]': isWide,
-            'xl:grid-cols-[175px_auto]': !isWide
+            ' lg:grid-cols-[110px_auto_110px_auto]': isWide,
+            'md:grid-cols-1 lg:grid-cols-[175px_auto]': !isWide
         }"
     >
         <template 
