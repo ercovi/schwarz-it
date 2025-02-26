@@ -53,28 +53,10 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig();
-const API_URL = config.public.apiUrl;
-
 const {params} = useRoute();
 const routeId = params.id;
-
-const cardsStore = useCardsStore();
-
-const { data: card } = useFetch(`${routeId}`, {
-  baseURL: `${API_URL}/`,
-  //Before requesting, check if the card is already in the store.
-  getCachedData: () => {
-    return cardsStore.getCardById(routeId) || null;
-  },
-  //Once the data is obtained from the API, the card is stored in the store.
-  transform: (cardFromApi) => {
-    if (!cardsStore.getCardById(routeId)) {
-      cardsStore.pushCards([cardFromApi?.card]);
-    }
-    return cardFromApi?.card;
-  }
-});
+const { getCardById } = useCardsAPI();
+const { data: card } = getCardById(routeId);
 
 const powers = computed(() => [
   { label: 'Mana Cost', value: card.value.manaCost },
@@ -93,10 +75,10 @@ const legalities = computed(() => {
 useHead({
     title: `${card.value?.name} - Detailed Page`,
     meta: [
-        { name: 'description', content: card?.text || 'Card details' },
-        { property: 'og:title', content: card?.name },
-        { property: 'og:description', content: card?.text || 'Card details' },
-        { property: 'og:image', content: card?.imageUrl },
+        { name: 'description', content: card.value?.text || 'Card details' },
+        { property: 'og:title', content: card.value?.name },
+        { property: 'og:description', content: card.value?.text || 'Card details' },
+        { property: 'og:image', content: card.value?.imageUrl },
     ]
 });
 
