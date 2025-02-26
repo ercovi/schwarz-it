@@ -19,9 +19,9 @@ export const useCardsAPI = () => {
     };
 
     const getCards = (page, pageSize) => {
-        return useAsyncData(`products-page-${page}`,
+        return useAsyncData(`products-page-${page.value}`,
             () => $fetch(API_URL, {
-                params: { page, pageSize },
+                params: { page: page.value, pageSize },
             }),
             { watch: [page], retry: 3 }
         );
