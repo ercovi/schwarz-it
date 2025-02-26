@@ -1,21 +1,11 @@
 <script setup>
-const config = useRuntimeConfig();
-const API_URL = config.public.apiUrl;
 const page = ref(1); 
 const pageSize = 12;
-
 const cardsStore = useCardsStore()
+const { getCards } = useCardsAPI();
 
-const { data, pending, error, refresh } = useAsyncData(
-    `products-page-${page.value}`,
-    () => $fetch(API_URL, {
-        params: {
-            page: page.value,
-            pageSize,
-        } 
-    }),
-    { watch: [page], retry: 3 }
-);
+
+const { data, pending, error, refresh } = getCards(page, pageSize)
 
 watch(data, (newData) => {
   if (newData && newData.cards) {

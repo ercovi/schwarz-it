@@ -18,5 +18,14 @@ export const useCardsAPI = () => {
         });
     };
 
-    return {getCardById};
+    const getCards = (page, pageSize) => {
+        return useAsyncData(`products-page-${page}`,
+            () => $fetch(API_URL, {
+                params: { page, pageSize },
+            }),
+            { watch: [page], retry: 3 }
+        );
+    };
+
+    return {getCardById, getCards};
 }
