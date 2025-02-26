@@ -20,6 +20,8 @@ useHead({
             content: 'noindex, nofollow',
         },
     ],
-
+    htmlAttrs: {
+        lang: 'en'
+    }
 });
 </script>
