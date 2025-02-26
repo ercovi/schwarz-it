@@ -1,5 +1,9 @@
 <template>
-    <div id="loading" class="fixed top-0 left-0 w-full h-full bg-white bg-opacity-75 z-50 flex items-center justify-center">
+    <div 
+        id="loading" 
+        class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-white bg-opacity-75"
+        aria-live="polite"
+    >
         <div class="loader" />
     </div>        
 </template>
