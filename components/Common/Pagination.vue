@@ -5,12 +5,14 @@
         <CommonButton 
             :disabled="page <= 1"
             :variant="page <= 1 ? 'outline' : 'solid'"
+            :ariaLabel="`Go to page ${page - 1}`"
             @click="decrementPage"
         >
             Previous
         </CommonButton>
         <CommonButton
             @click="incrementPage"
+            :ariaLabel="`Go to page ${page + 1}`"
         >
             Next
         </CommonButton>

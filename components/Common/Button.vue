@@ -2,6 +2,8 @@
     <button
         class="text-center"
         :class="buttonStyles"
+        v-bind="$attrs"
+        :ariaLabel
     >
         <slot />
     </button>
@@ -11,18 +13,22 @@
 const props = defineProps({
     variant: { 
         type: String, 
-        default: 'solid', // 'solid', 'transparent', 'outline', //pill
+        default: 'solid',
         validator(value) {
-            return ['solid', 'transparent', 'outline'].includes(value)
+            return ['solid', 'outline'].includes(value)
         },
     },
     theme: { 
         type: String, 
         validator(value) {
-            return ['red', 'green', 'blue', 'white'].includes(value)
+            return ['red', 'blue',].includes(value)
         },
         default: 'blue'
     }, 
+    ariaLabel: { 
+        type: String,
+        default: null
+    }
 })
 
 const buttonStyles = computed(() => {
@@ -30,8 +36,6 @@ const buttonStyles = computed(() => {
     switch (props.variant) {
     case 'solid':
         return `${baseClass} is-solid`
-    case 'transparent':
-        return `${baseClass} is-transparent`
     case 'outline':
         return `${baseClass} is-outline`
     default:

@@ -2,21 +2,30 @@
     <header class="sticky top-0 z-10 flex items-center justify-center w-full h-16 bg-white border-b border-gray-300 shadow-md">
         <nav 
             v-if="menuItems.length > 0"
-            class="flex gap-x-8"
+            aria-label="Main navigation"
         >
-            <NuxtLink
-                v-for="{name, path, id} in menuItems"
-                :key="id"
-                :to="path"
-                class="text-xl font-bold"
-            >
-                {{name}}
-            </NuxtLink>
+            <ul class="flex gap-x-8" role="menubar">
+                <li
+                    v-for="{ name, path, id } in menuItems"
+                    :key="id"
+                    role="none"
+                >
+                    <NuxtLink
+                        :to="path"
+                        class="text-xl font-bold"
+                        role="menuitem"
+                        :aria-current="route?.path === path ? 'page' : null"
+                    >
+                        {{ name }}
+                    </NuxtLink>
+                </li>
+            </ul>
         </nav>
     </header>
 </template>
 
 <script setup>
+const route = useRoute();
 const menuItems = ref([
     { name: 'Home', path: '/', id: useId() },
     { name: 'Collection', path: '/collection', id: useId() },
