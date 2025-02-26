@@ -7,7 +7,6 @@
             :to="`/card/${id}`"
             :aria-label="`View detailed page of ${name} card`"
         >
-            <!-- TODO: Conver in NuxtImages ? -->
             <CardImage
                 :imageUrl
                 :name
