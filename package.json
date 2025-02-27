@@ -4,13 +4,16 @@
     "type": "module",
     "scripts": {
         "build": "nuxt build",
-        "dev": "nuxt dev -o",
+        "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "test": "vitest"
+        "test": "vitest",
+        "test:unit": "vitest --run tests/unit",
+        "test:e2e": "vitest --run tests/e2e",
+        "test:integration": "vitest --run tests/integration"
     },
     "dependencies": {
         "@nuxt/image": "1.9.0",
