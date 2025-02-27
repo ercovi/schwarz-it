@@ -28,13 +28,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm dlx playwright install --with-deps  
   
-
       - name: Run Tests
-        run: pnpm vitest  
+        run: pnpm test:unit-integration
 
   deploy:
     name: Deploy to Netlify  
