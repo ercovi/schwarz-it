@@ -10,11 +10,9 @@ export const useCollectionStore = defineStore('collection', {
     actions: {
         addCardToCollection(card) {
             this.cards.push(card);
-            console.log(this.cards)
         },
         removeCardFromCollection(id) {
             this.cards = this.cards.filter(c => c.id !== id);
-            console.log(this.cards)
         },
         toggleCardInCollection(card) {
             this.isInCollection(card.id)
