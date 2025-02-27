@@ -4,11 +4,6 @@ export const useCardsStore = defineStore('cards', {
     state: () => ({
         cards: []
     }),
-    getters: {
-        getCardsByPage: (state) => (page) => {
-            return state.cards.filter(card => card.page === page);
-        }
-    },
     actions: {
         pushCards(newCards) {
             const existingIds = new Set(this.cards.map(card => card.id));
