@@ -1,5 +1,5 @@
 <template>
-    <footer class="w-full py-4 text-sm italic text-center text-gray-400">
+    <footer class="w-full py-4 text-sm italic text-center text-gray-500">
         <p >
             Developed by <a href="https://ercovi.dev" aria-label="View the developer portfolio" rel="noopener noreferrer" target="_blank">Èric Corbí</a>
         </p>
