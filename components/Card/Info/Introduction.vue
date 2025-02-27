@@ -1,22 +1,3 @@
-<template>
-    <div class="flex flex-col gap-y-3">
-        <header>
-            <h2 class="text-2xl font-semibold">
-                {{ name }}
-            </h2>
-            <h3 
-                v-if="artist"
-                class="text-base italic text-gray-500">
-                By {{artist}}
-            </h3>
-        </header>
-          
-        <CardInfoDefinitionList 
-            :items="types"
-        />
-    </div>
-</template>
-
 <script setup>
 const props = defineProps({
     name: {
@@ -35,3 +16,22 @@ const types = computed(() => [
 ]);
 
 </script>
+
+<template>
+    <div class="flex flex-col gap-y-3">
+        <header>
+            <h2 class="text-2xl font-semibold">
+                {{ name }}
+            </h2>
+            <h3 
+                v-if="artist"
+                class="text-base italic text-gray-500">
+                By {{artist}}
+            </h3>
+        </header>
+          
+        <CardInfoDefinitionList 
+            :items="types"
+        />
+    </div>
+</template>

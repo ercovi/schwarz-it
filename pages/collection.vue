@@ -1,3 +1,21 @@
+<script setup>
+const collectionStore = useCollectionStore();
+const { cards } = storeToRefs(collectionStore);
+
+useHead({
+    title: cards.length === 0 ? 'Your Magic Collection is Empty' : 'Your Magic Card Collection',
+    meta: [
+        {
+            name: 'description',
+            content: cards.length === 0 
+                ? 'Your collection is empty. Add cards to start your collection.'
+                : 'Explore your collection of Magic cards.',
+        },
+        { name: 'robots', content: 'index, follow' },
+    ]
+})
+</script>
+
 <template>
     <div>   
         <template v-if="cards.length === 0">
@@ -29,21 +47,3 @@
         </CardGrid>
     </div>
 </template>
-
-<script setup>
-const collectionStore = useCollectionStore();
-const { cards } = storeToRefs(collectionStore);
-
-useHead({
-    title: cards.length === 0 ? 'Your Magic Collection is Empty' : 'Your Magic Card Collection',
-    meta: [
-        {
-            name: 'description',
-            content: cards.length === 0 
-                ? 'Your collection is empty. Add cards to start your collection.'
-                : 'Explore your collection of Magic cards.',
-        },
-        { name: 'robots', content: 'index, follow' },
-    ]
-})
-</script>

@@ -1,3 +1,11 @@
+<script setup>
+const route = useRoute();
+const menuItems = ref([
+    { name: 'Home', path: '/', id: useId() },
+    { name: 'Collection', path: '/collection', id: useId() },
+]);
+</script>
+
 <template>
     <header class="sticky top-0 z-10 flex items-center justify-center w-full h-16 bg-white border-b border-gray-300 shadow-md">
         <nav 
@@ -24,13 +32,6 @@
     </header>
 </template>
 
-<script setup>
-const route = useRoute();
-const menuItems = ref([
-    { name: 'Home', path: '/', id: useId() },
-    { name: 'Collection', path: '/collection', id: useId() },
-]);
-</script>
 
 <style scoped>
 nav:has(.router-link-exact-active) a:not(.router-link-exact-active) {

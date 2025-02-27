@@ -1,3 +1,25 @@
+<script setup>
+const props = defineProps({ 
+    card: {
+        type: Object,
+        required: true,
+    } 
+});
+const collectionStore = useCollectionStore();
+
+const isInCollection = computed(() => collectionStore.isInCollection(props.card.id));
+
+const toggleCardInCollection = () => {
+    collectionStore.toggleCardInCollection(props.card);
+};
+
+const label = computed(() => 
+    isInCollection.value 
+        ? `Remove ${props.card?.name} from your collection` 
+        : `Add ${props.card?.name} to your collection`
+);
+</script>
+
 <template>
     <button
         :aria-label="label"
@@ -23,25 +45,3 @@
         </svg>
     </button>
 </template>
-
-<script setup>
-const props = defineProps({ 
-    card: {
-        type: Object,
-        required: true,
-    } 
-});
-const collectionStore = useCollectionStore();
-
-const isInCollection = computed(() => collectionStore.isInCollection(props.card.id));
-
-const toggleCardInCollection = () => {
-    collectionStore.toggleCardInCollection(props.card);
-};
-
-const label = computed(() => 
-    isInCollection.value 
-        ? `Remove ${props.card?.name} from your collection` 
-        : `Add ${props.card?.name} to your collection`
-);
-</script>

@@ -1,16 +1,3 @@
-<template>
-    <Body class="bg-slate-400">
-        <NuxtLoadingIndicator
-            :throttle="200"
-            :height="3"
-            :color="'#a2a2a2'"
-        />
-        <NuxtLayout>
-            <NuxtPage />
-        </NuxtLayout>
-    </Body>
-</template>
-
 <script setup>
 useHead({
     title: 'Cards Collections APP - Schawrz',
@@ -25,3 +12,15 @@ useHead({
     }
 });
 </script>
+<template>
+    <Body class="bg-slate-400">
+        <NuxtLoadingIndicator
+            :throttle="200"
+            :height="3"
+            :color="'#a2a2a2'"
+        />
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
+    </Body>
+</template>

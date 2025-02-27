@@ -1,3 +1,36 @@
+<script setup>
+import {useCardsAPI} from "@/composables/useCardsAPI"
+const {params} = useRoute();
+const routeId = params.id;
+const { getCardById } = useCardsAPI();
+const { data: card } = getCardById(routeId);
+
+const powers = computed(() => [
+  { label: 'Mana Cost', value: card.value.manaCost },
+  { label: 'Power', value: card.value.power },
+  { label: 'Cmc', value: card.value.cmc },
+  { label: 'Toughness', value: card.value.toughness }
+]);
+
+const legalities = computed(() => {
+  return card.value?.legalities?.length
+    ? card.value.legalities.map(({ format, legality }) => ({ label: format, value: legality }))
+    : [];
+});
+
+
+useHead({
+    title: `${card.value?.name} - Detailed Magic Page`,
+    meta: [
+        { name: 'description', content: card.value?.text || 'Magic card details' },
+        { property: 'og:title', content: card.value?.name },
+        { property: 'og:description', content: card.value?.text || 'Magic card details' },
+        { property: 'og:image', content: card.value?.imageUrl },
+    ]
+});
+
+</script>
+
 <template>
     <section class="">
         <h1 class="text-3xl font-semibold text-center md:text-5xl">{{ card?.name }}</h1>
@@ -51,36 +84,3 @@
         </main>
     </section>
 </template>
-
-<script setup>
-import {useCardsAPI} from "@/composables/useCardsAPI"
-const {params} = useRoute();
-const routeId = params.id;
-const { getCardById } = useCardsAPI();
-const { data: card } = getCardById(routeId);
-
-const powers = computed(() => [
-  { label: 'Mana Cost', value: card.value.manaCost },
-  { label: 'Power', value: card.value.power },
-  { label: 'Cmc', value: card.value.cmc },
-  { label: 'Toughness', value: card.value.toughness }
-]);
-
-const legalities = computed(() => {
-  return card.value?.legalities?.length
-    ? card.value.legalities.map(({ format, legality }) => ({ label: format, value: legality }))
-    : [];
-});
-
-
-useHead({
-    title: `${card.value?.name} - Detailed Magic Page`,
-    meta: [
-        { name: 'description', content: card.value?.text || 'Magic card details' },
-        { property: 'og:title', content: card.value?.name },
-        { property: 'og:description', content: card.value?.text || 'Magic card details' },
-        { property: 'og:image', content: card.value?.imageUrl },
-    ]
-});
-
-</script>

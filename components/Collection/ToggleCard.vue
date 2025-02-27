@@ -1,12 +1,3 @@
-<template>
-    <CommonButton
-        :theme="isInCollection ? 'red' : 'blue'"
-        :ariaLabel="label"
-        @click="toggleCard"
-    >
-        {{buttonAction}}
-    </CommonButton>
-</template>
 <script setup>
 const props = defineProps({
     card: {
@@ -22,3 +13,12 @@ const buttonAction = computed(() => `${isInCollection.value ? 'Remove from' : 'A
 const label = computed(() => `Click to ${isInCollection.value ? 'remove' : 'add'} ${props.card.name} from your collection`);
 const toggleCard = () => collectionStore.toggleCardInCollection(props?.card);
 </script>
+<template>
+    <CommonButton
+        :theme="isInCollection ? 'red' : 'blue'"
+        :ariaLabel="label"
+        @click="toggleCard"
+    >
+        {{buttonAction}}
+    </CommonButton>
+</template>

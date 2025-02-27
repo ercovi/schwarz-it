@@ -1,3 +1,24 @@
+<script setup>
+defineProps({
+    id: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    manaCost: {
+        type: String,
+        required: true,
+    },
+    type: {
+        type: String,
+        required: true,
+    },
+    imageUrl: String,
+});
+</script>
 <template>
     <article
         class="relative p-3 py-6 bg-white rounded-lg shadow-lg preview-card md:py-3"
@@ -24,25 +45,3 @@
         />
     </article>
 </template>
-
-<script setup>
-defineProps({
-    id: {
-        type: String,
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    manaCost: {
-        type: String,
-        required: true,
-    },
-    type: {
-        type: String,
-        required: true,
-    },
-    imageUrl: String,
-});
-</script>
