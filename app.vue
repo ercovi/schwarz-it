@@ -1,5 +1,5 @@
 <template>
-    <Body class="bg-slate-300">
+    <Body class="bg-slate-400">
         <NuxtLoadingIndicator
             :throttle="200"
             :height="3"
