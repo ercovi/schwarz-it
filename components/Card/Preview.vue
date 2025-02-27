@@ -4,7 +4,7 @@
     >
         <NuxtLink 
             class="flex flex-col items-center gap-y-3"
-            :to="`/card/${id}`"
+            :to="{ name: 'card-id', params: { id } }"
             :aria-label="`View detailed page of ${name} card`"
         >
             <CardImage

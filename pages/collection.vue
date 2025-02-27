@@ -4,7 +4,13 @@
             <div class="text-xl text-center">
                 <h2>Your collection is empty 🥲</h2>
                 <p>Go back to the 
-                    <NuxtLink to="/" class="hover:underline" aria-label="Return to the home page">Home Page</NuxtLink>
+                    <NuxtLink   
+                        :to="{ name: 'index' }"
+                        class="hover:underline" 
+                        aria-label="Return to the home page"
+                    >
+                        Home Page
+                    </NuxtLink>
                 </p>
 
             </div>
