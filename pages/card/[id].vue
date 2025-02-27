@@ -53,6 +53,7 @@
 </template>
 
 <script setup>
+import {useCardsAPI} from "@/composables/useCardsAPI"
 const {params} = useRoute();
 const routeId = params.id;
 const { getCardById } = useCardsAPI();

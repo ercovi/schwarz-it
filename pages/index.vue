@@ -1,4 +1,5 @@
 <script setup>
+import {useCardsAPI} from "@/composables/useCardsAPI"
 const page = ref(1); 
 const pageSize = 12;
 const cardsStore = useCardsStore()
