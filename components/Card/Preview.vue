@@ -1,6 +1,6 @@
 <template>
     <article
-        class="relative p-3 py-6 bg-white rounded-lg shadow-lg md:py-3"
+        class="relative p-3 py-6 bg-white rounded-lg shadow-lg preview-card md:py-3"
     >
         <NuxtLink 
             class="flex flex-col items-center gap-y-3"
