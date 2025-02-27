@@ -10,6 +10,7 @@
             <CardImage
                 :imageUrl
                 :name
+                class="aspect-card"
             />
             <CardInfoDetails 
                 :manaCost
